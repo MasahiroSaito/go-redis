@@ -1,0 +1,15 @@
+app:
+  image: masahirosaito/golang
+  volumes:
+    - ".:/go/src/app"
+  environment:
+    - REDIS_HOST=redis
+    - REDIS_PORT=6379
+    - REDIS_KEY=key
+    - REDIS_VALUE=value
+  links:
+    - redis
+redis:
+  image: redis:3.0.5
+  volumes:
+    - "./data/redis:/data"
